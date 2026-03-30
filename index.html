@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prithivi Ram V | EEE Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, "Segoe UI", "Roboto", "Helvetica Neue",
+          sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+        line-height: 1.5;
+        scroll-behavior: smooth;
+      }
+
+      /* container */
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* header / hero */
+      .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        padding: 60px 20px 48px;
+        text-align: center;
+        border-bottom: 4px solid #3b82f6;
+      }
+
+      /* Profile Picture Styles */
+      .profile-wrapper {
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+      }
+      .profile-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #3b82f6;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: linear-gradient(135deg, #3b82f6, #1e40af);
+      }
+      .profile-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 30px -8px rgba(59, 130, 246, 0.4);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+      .hero .subhead {
+        font-size: 1.2rem;
+        color: #cbd5e1;
+        max-width: 700px;
+        margin: 0 auto 20px;
+      }
+      .hero .desc {
+        font-size: 1rem;
+        color: #94a3b8;
+        max-width: 650px;
+        margin: 0 auto 28px;
+      }
+      .btn-resume {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 26px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+      }
+      .btn-resume:hover {
+        background: #2563eb;
+        transform: translateY(-2px);
+      }
+
+      /* section styling */
+      section {
+        padding: 48px 0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-left: 5px solid #3b82f6;
+        padding-left: 20px;
+        color: #0f172a;
+      }
+      .section-title i {
+        color: #3b82f6;
+        font-size: 1.6rem;
+      }
+
+      /* skills grid - badge style */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .skill-badge {
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 8px 20px;
+        border-radius: 40px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        color: #1e293b;
+        transition: all 0.2s;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      }
+      .skill-badge:hover {
+        border-color: #3b82f6;
+        background: #eff6ff;
+        transform: translateY(-1px);
+      }
+
+      /* cards for projects, papers, hackathons */
+      .card {
+        background: white;
+        border-radius: 20px;
+        padding: 20px 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        border: 1px solid #eef2ff;
+        transition: 0.2s;
+      }
+      .card:hover {
+        border-color: #b9d0f0;
+        box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.1);
+      }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        color: #0f172a;
+      }
+      .card-title i {
+        color: #3b82f6;
+        width: 28px;
+      }
+      .card-detail {
+        color: #334155;
+        font-size: 0.9rem;
+        margin-top: 8px;
+        padding-left: 38px;
+      }
+
+      /* education row */
+      .edu-item {
+        background: white;
+        border-radius: 20px;
+        padding: 18px 24px;
+        margin-bottom: 16px;
+        border: 1px solid #eef2ff;
+      }
+      .edu-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .edu-percent {
+        font-weight: 600;
+        color: #2563eb;
+        background: #eef2ff;
+        padding: 2px 12px;
+        border-radius: 40px;
+        font-size: 0.8rem;
+      }
+      .edu-institute {
+        color: #475569;
+        margin-top: 6px;
+        font-size: 0.9rem;
+      }
+
+      /* achievements / hackathons list */
+      .achievement-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .achievement-item {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        background: white;
+        padding: 12px 20px;
+        border-radius: 16px;
+        border: 1px solid #eef2ff;
+      }
+      .achievement-icon {
+        color: #3b82f6;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      /* contact section */
+      .contact-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        background: #f1f5f9;
+        border-radius: 32px;
+        padding: 28px 20px;
+        margin-top: 12px;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: white;
+        padding: 10px 22px;
+        border-radius: 60px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+      footer {
+        text-align: center;
+        padding: 32px 20px;
+        font-size: 0.8rem;
+        color: #5b6e8c;
+        background: #f1f5f9;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 640px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .profile-img {
+          width: 110px;
+          height: 110px;
+        }
+        .section-title {
+          font-size: 1.5rem;
+        }
+        .card {
+          padding: 16px;
+        }
+        .card-detail {
+          padding-left: 28px;
+        }
+        .container {
+          padding: 0 18px;
+        }
+      }
+    </style>
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="hero">
+      <div class="container">
+        <!-- Profile Picture -->
+        <div class="profile-wrapper">
+          <img
+            class="profile-img"
+            src="prithivi profile.jpeg"
+            alt="Prithivi Ram V Profile Picture"
+            onerror="this.src='https://randomuser.me/api/portraits/men/32.jpg'"
+          />
+        </div>
+        <h1>Prithivi Ram V</h1>
+        <div class="subhead">
+          Electrical and Electronics Engineering Student
+        </div>
+        <div class="desc">
+          Pre-final year EEE student passionate about embedded systems,
+          industrial automation, and sustainable tech. Strong foundation in
+          C/C++ and real-time applications. Seeking to contribute through
+          innovative projects and research.
+        </div>
+        <button class="btn-resume" id="resumeBtn">
+          <i class="fas fa-download"></i> Download Resume (PDF)
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Technical Skills -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-microchip"></i>
+          <h2>⚡ Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+          <span class="skill-badge">C</span>
+          <span class="skill-badge">C++</span>
+          <span class="skill-badge">Embedded C</span>
+          <span class="skill-badge">Arduino / IoT</span>
+          <span class="skill-badge">PCB Design</span>
+          <span class="skill-badge">MATLAB Basics</span>
+          <span class="skill-badge">Power Systems</span>
+          <span class="skill-badge">Control Theory</span>
+          <span class="skill-badge">Problem Solving</span>
+          <span class="skill-badge">Team Leadership</span>
+          <span class="skill-badge">Time Management</span>
+          <span class="skill-badge">Circuit Debugging</span>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-laptop-code"></i>
+          <h2>📁 Projects</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-chart-line"></i> Smart Factory Voltage Fluctuation
+            Logging System
+          </div>
+          <div class="card-detail">
+            <strong>Components:</strong> Arduino Mega, ACS712, SD card module,
+            ESP8266, Thingspeak<br />
+            <strong>Abstract:</strong> Real-time logging of voltage sags &
+            swells in industrial environments. Data visualization on cloud with
+            alerts for preventive maintenance, reducing unexpected downtime.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-robot"></i> Obstacle Avoiding Robot
+          </div>
+          <div class="card-detail">
+            <strong>Components:</strong> Arduino Uno, HC-SR04 Ultrasonic, L298N
+            motor driver, servo mount<br />
+            <strong>Abstract:</strong> Autonomous navigation robot that detects
+            obstacles and changes path dynamically. Used for automation concepts
+            and surveillance prototypes.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-plug"></i> IoT Greenhouse Monitoring System
+          </div>
+          <div class="card-detail">
+            <strong>Components:</strong> DHT22, soil moisture sensor, ESP32,
+            relay module, Blynk<br />
+            <strong>Abstract:</strong> Wireless monitoring of temperature,
+            humidity and soil moisture; automated irrigation control. Presented
+            paper on precision agriculture applications.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paper Presentations -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-file-alt"></i>
+          <h2>📄 Paper Presentations</h2>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-car-battery"></i> Hybrid Electric Vehicles (HEV)
+          </div>
+          <div class="card-detail">
+            Presented at National Level Symposium (REC) – focused on energy
+            management strategies and regenerative braking efficiency.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-microchip"></i> Autonomous Mobile Robots
+          </div>
+          <div class="card-detail">
+            GCE Salem TechMeet – discussed sensor fusion and ROS-based
+            navigation for warehouse automation. Received appreciation award.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            <i class="fas fa-leaf"></i> IoT Greenhouse Monitoring
+          </div>
+          <div class="card-detail">
+            Presented smart farming solutions using LPWAN and predictive
+            analytics at Agri-Tech Symposium 2024.
+          </div>
+        </div>
+      </section>
+
+      <!-- Hackathons & Competitions -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-trophy"></i>
+          <h2>🏆 Hackathons & Achievements</h2>
+        </div>
+        <div class="achievement-list">
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+            <div>
+              <strong>Smart India Hackathon 2025</strong> – Selected for
+              internal round (Energy domain: AI-based grid management prototype)
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-microchip"></i></div>
+            <div>
+              <strong>PCB Design Contest – Naan Mudhalvan</strong> – 1st Prize
+              for dual-layer motor driver board design
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-industry"></i></div>
+            <div>
+              <strong>Createch – L&T</strong> – Finalist among 30 teams for
+              Industry 4.0 automation solution
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon"><i class="fas fa-robot"></i></div>
+            <div>
+              <strong
+                >2nd Prize – Frequency Tach Game (College Tech Fest)</strong
+              >
+              – Embedded system design challenge
+            </div>
+          </div>
+          <div class="achievement-item">
+            <div class="achievement-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div>
+              <strong>NPTEL Elite + Silver</strong> – C++ Programming
+              Certification (top 5%)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-graduation-cap"></i>
+          <h2>🎓 Education</h2>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">
+            <span>Government College of Engineering, Salem</span>
+            <span class="edu-percent">CGPA: 8.9* (pursuing)</span>
+          </div>
+          <div class="edu-institute">
+            B.E – Electrical & Electronics Engineering (2023–2027)
+          </div>
+          <div style="margin-top: 8px; color: #334155; font-size: 0.9rem">
+            • Minor focus: Embedded Systems & IoT <br />
+            • Course highlights: Power Systems, Electrical Machines, Control
+            Systems, Data Structures <br />
+            • Vice Chairperson – IEEE Student Branch (2024–25) <br />
+            • Academic scholarship for meritorious performance
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">
+            <span>HSE (Higher Secondary)</span>
+            <span class="edu-percent">92.66%</span>
+          </div>
+          <div class="edu-institute">KSR Matric Hr Sec School</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">
+            <span>SSLC</span>
+            <span class="edu-percent">95.6%</span>
+          </div>
+          <div class="edu-institute">KSR Matric Hr Sec School</div>
+        </div>
+      </section>
+
+      <!-- Certifications & Leadership -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-certificate"></i>
+          <h2>📜 Certifications & Leadership</h2>
+        </div>
+        <div
+          class="skills-grid"
+          style="gap: 14px; flex-direction: column; align-items: flex-start"
+        >
+          <div>
+            <i
+              class="fas fa-check-circle"
+              style="color: #2563eb; width: 24px"
+            ></i>
+            &nbsp; Industrial IoT & Automation – CISCO Networking Academy
+          </div>
+          <div>
+            <i class="fas fa-check-circle" style="color: #2563eb"></i> &nbsp;
+            Embedded Systems Design (NIT Trichy Workshop)
+          </div>
+          <div>
+            <i class="fas fa-users" style="color: #2563eb"></i> &nbsp; IEEE
+            Student Branch Vice Chairperson – led technical events & workshops
+          </div>
+          <div>
+            <i class="fas fa-chalkboard-user" style="color: #2563eb"></i> &nbsp;
+            NSS Coordinator: Organized rural electrification awareness camps
+          </div>
+        </div>
+      </section>
+
+      <!-- Languages -->
+      <section>
+        <div class="section-title">
+          <i class="fas fa-language"></i>
+          <h2>🗣️ Languages</h2>
+        </div>
+        <div class="skills-grid">
+          <span class="skill-badge">English (Fluent)</span>
+          <span class="skill-badge">Tamil (Native)</span>
+          <span class="skill-badge">Hindi (Conversational)</span>
+        </div>
+      </section>
+
+      <!-- Contact Me -->
+      <section style="border-bottom: none">
+        <div class="section-title">
+          <i class="fas fa-envelope"></i>
+          <h2>📬 Contact Me</h2>
+        </div>
+        <div class="contact-flex">
+          <div class="contact-item">
+            <i class="fas fa-envelope" style="color: #2563eb"></i>
+            prithiviram911@gmail.com
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt" style="color: #2563eb"></i> Salem,
+            Tamil Nadu
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt" style="color: #2563eb"></i> +91 98765
+            43210 (on request)
+          </div>
+        </div>
+        <div
+          style="
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #475569;
+          "
+        >
+          <i class="fab fa-github"></i> github.com/prithivi-eee &nbsp;|&nbsp;
+          <i class="fab fa-linkedin"></i> linkedin.com/in/prithiviram-v
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>
+        © 2025 Prithivi Ram V — Electrical and Electronics Engineering Portfolio
+      </p>
+      <p style="margin-top: 5px">
+        "Innovation bridges circuits and real-world impact"
+      </p>
+    </footer>
+
+    <script>
+      const resumeBtn = document.getElementById("resumeBtn");
+      if (resumeBtn) {
+        resumeBtn.addEventListener("click", () => {
+          // Option 1: Download PDF file if it exists in the same folder
+          // Replace 'prithivi_resume_final.pdf' with your actual PDF filename
+          const pdfFileName = "prithivi resume final.pdf";
+
+          // Create a link element to trigger download
+          const link = document.createElement("a");
+          link.href = pdfFileName;
+          link.download = "prithivi resume final.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Show success toast message
+          const toast = document.createElement("div");
+          toast.innerText = "📄 Downloading your PDF resume...";
+          toast.style.position = "fixed";
+          toast.style.bottom = "24px";
+          toast.style.left = "24px";
+          toast.style.backgroundColor = "#1f2937";
+          toast.style.color = "#e2e8f0";
+          toast.style.padding = "10px 20px";
+          toast.style.borderRadius = "40px";
+          toast.style.fontSize = "0.85rem";
+          toast.style.zIndex = "999";
+          toast.style.borderLeft = "4px solid #3b82f6";
+          toast.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+          document.body.appendChild(toast);
+          setTimeout(() => toast.remove(), 2000);
+        });
+      }
+    </script>
+  </body>
+</html>
